@@ -2,18 +2,15 @@ import { React, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Modal } from "@mui/material";
+import Modal from "@mui/material/Modal";
 import Cart from "./Cart";
+import Badge from "@mui/material/Badge";
 
-const NavBar = ({ cart }) => {
+const NavBar = ({ cart, setCart }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -23,15 +20,15 @@ const NavBar = ({ cart }) => {
     <>
       <AppBar position="sticky">
         <Container maxWidth="100%">
-          <Toolbar disableGutters>
+          <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
             <Typography
               variant="h5"
               noWrap
               component="a"
               href=""
+              maxWidth="fit-content"
               sx={{
                 mr: 2,
-
                 flexGrow: 1,
                 fontFamily: "monospace",
                 fontWeight: 700,
@@ -45,17 +42,20 @@ const NavBar = ({ cart }) => {
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="View Cart">
-                <IconButton size="large" onClick={handleOpen} sx={{ p: 0 }}>
-                  <Typography>{cart.length}</Typography>
+                <Badge
+                  badgeContent={cart.length}
+                  onClick={handleOpen}
+                  sx={{ p: 0, cursor: "pointer" }}
+                >
                   <ShoppingCartIcon />
-                </IconButton>
+                </Badge>
               </Tooltip>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
       <Modal open={open} onClose={handleClose}>
-        <Cart cart={cart} />
+        <Cart cart={cart} setCart={setCart} />
       </Modal>
     </>
   );

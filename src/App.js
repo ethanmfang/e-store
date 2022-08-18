@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <NavBar cart={cart} />
+      <NavBar cart={cart} setCart={setCart} />
       <SearchBar setKeyword={setKeyword} />
       <Products searchedItems={searchedItems} cart={cart} setCart={setCart} />
 
