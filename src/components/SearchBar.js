@@ -1,24 +1,11 @@
-import React, { useRef } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import "./SearchBar.css";
 
-export default function SearchBar({ products, setProducts }) {
-  const searchRef = useRef();
-
-  const searchProducts = () => {
-    const search = searchRef.current.value.toLowerCase();
-    const result = products.filter(
-      (product) =>
-        search === "" ||
-        product.title.toLowerCase().includes(search) ||
-        product.description.toLowerCase().includes(search)
-    );
-    console.log(result);
-  };
-
+export default function SearchBar({ setKeyword }) {
   return (
     <Box
       className="SearchBar"
@@ -28,16 +15,11 @@ export default function SearchBar({ products, setProducts }) {
       sx={{ mt: 2, mb: 2 }}
     >
       <TextField
-        ref={searchRef}
         label="Search Products"
         variant="outlined"
-        onChange={searchProducts}
+        onChange={(e) => setKeyword(e.target.value)}
       />
-      <IconButton
-        className="SearchButton"
-        size="large"
-        sx={{ outline: "black" }}
-      >
+      <IconButton className="SearchButton" size="large">
         <SearchIcon />
       </IconButton>
     </Box>
