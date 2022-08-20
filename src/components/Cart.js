@@ -13,7 +13,9 @@ export default function Cart({ cart, setCart }) {
     });
     return totalPrice;
   };
-
+  const removeCartItem = (itemToRemove) => {
+    setCart(cart.filter((cartItems) => cartItems !== itemToRemove));
+  };
   return (
     <Box>
       <Card>
@@ -30,8 +32,7 @@ export default function Cart({ cart, setCart }) {
               avatar={<Avatar alt="product-icon" src={item.image} />}
               action={
                 // onClick remove this item from array
-                // align button to vertical center of card
-                <IconButton>
+                <IconButton onClick={() => removeCartItem(item)}>
                   <ClearIcon />
                 </IconButton>
               }
