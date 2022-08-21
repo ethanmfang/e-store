@@ -21,10 +21,6 @@ function App() {
   const [cart, setCart] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [products, setProducts] = useState([]);
-  //const [open, setOpen] = useState(false);
-
-  // const closeItemModal = () => setOpen(false);
-  // const openItemModal = () => setOpen(true);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -36,17 +32,9 @@ function App() {
 
   return (
     <>
-      <NavBar cart={cart} />
+      <NavBar cart={cart} setCart={setCart} />
       <SearchBar setKeyword={setKeyword} />
       <Products searchedItems={searchedItems} cart={cart} setCart={setCart} />
-
-      {/* <Modal open={open} onClose={closeItemModal}>
-        <Card>
-          <CardHeader
-            title={<Typography className="title">{item.title}</Typography>}
-          ></CardHeader>
-        </Card>
-      </Modal> */}
     </>
   );
 }

@@ -13,12 +13,7 @@ export default function Products({ searchedItems, cart, setCart }) {
     <div className="productContainer">
       {searchedItems.map((item) => {
         return (
-          <Card
-            className="Card"
-            sx={{ width: 350 }}
-            key={item.id}
-            //onClick={openItemModal}
-          >
+          <Card className="Card" sx={{ width: 350 }} key={item.id}>
             <CardHeader
               avatar={<Avatar alt="product-icon" src={item.image} />}
               action={
