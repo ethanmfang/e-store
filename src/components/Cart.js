@@ -13,11 +13,13 @@ export default function Cart({ cart, setCart }) {
     });
     return totalPrice;
   };
+
   const removeCartItem = (itemToRemove) => {
-    setCart(cart.filter((cartItems) => cartItems !== itemToRemove));
+    cart.splice(itemToRemove, 1);
+    setCart([...cart]);
   };
   return (
-    <Box>
+    <Box maxHeight={800} overflow="scroll">
       <Card>
         <Typography m={2} fontWeight={700}>
           Cart Total: ${cartTotalPrice().toFixed(2)}
@@ -25,14 +27,13 @@ export default function Cart({ cart, setCart }) {
           Items in cart: {cart.length}
         </Typography>
       </Card>
-      {cart.map((item) => {
+      {cart.map((item, index) => {
         return (
           <Card>
             <CardHeader
               avatar={<Avatar alt="product-icon" src={item.image} />}
               action={
-                // onClick remove this item from array
-                <IconButton onClick={() => removeCartItem(item)}>
+                <IconButton onClick={() => removeCartItem(index)}>
                   <ClearIcon />
                 </IconButton>
               }
