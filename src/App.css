@@ -1,6 +1,6 @@
 .title {
   font-size: 15px;
-  width: 185px;
+  width: 200px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -28,4 +28,22 @@
 }
 .SearchButton {
   border-color: black;
+}
+.cart {
+  width: 70vw;
+  margin: auto;
+  margin-top: 25px;
+  height: 80vh;
+}
+.cartItems {
+  overflow: scroll;
+  height: 80vh;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+.cartHeader {
+}
+.cartItem {
 }
