@@ -6,7 +6,6 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-import "./Products.css";
 
 export default function Products({ searchedItems, cart, setCart }) {
   return (

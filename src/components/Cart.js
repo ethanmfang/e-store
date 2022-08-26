@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import { Card, CardHeader, IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
+import { style } from "@mui/system";
 
 export default function Cart({ cart, setCart }) {
   const cartTotalPrice = () => {
@@ -19,34 +20,36 @@ export default function Cart({ cart, setCart }) {
     setCart([...cart]);
   };
   return (
-    <Box maxHeight={800} overflow="scroll">
-      <Card>
+    <Box className="cart">
+      <Card className="cartHeader">
         <Typography m={2} fontWeight={700}>
           Cart Total: ${cartTotalPrice().toFixed(2)}
           <br />
           Items in cart: {cart.length}
         </Typography>
       </Card>
-      {cart.map((item, index) => {
-        return (
-          <Card>
-            <CardHeader
-              avatar={<Avatar alt="product-icon" src={item.image} />}
-              action={
-                <IconButton onClick={() => removeCartItem(index)}>
-                  <ClearIcon />
-                </IconButton>
-              }
-              title={
-                <Typography className="cartTitle">{item.title}</Typography>
-              }
-              subheader={
-                <Typography className="price">${item.price}</Typography>
-              }
-            ></CardHeader>
-          </Card>
-        );
-      })}
+      <Box className="cartItems">
+        {cart.map((item, index) => {
+          return (
+            <Card className="cartItem" sx={{ borderRadius: 0 }}>
+              <CardHeader
+                avatar={<Avatar alt="product-icon" src={item.image} />}
+                action={
+                  <IconButton onClick={() => removeCartItem(index)}>
+                    <ClearIcon />
+                  </IconButton>
+                }
+                title={
+                  <Typography className="cartTitle">{item.title}</Typography>
+                }
+                subheader={
+                  <Typography className="cartPrice">${item.price}</Typography>
+                }
+              ></CardHeader>
+            </Card>
+          );
+        })}
+      </Box>
     </Box>
   );
 }
