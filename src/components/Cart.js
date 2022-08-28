@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
-import { Card, CardHeader, IconButton } from "@mui/material";
+import { Button, Card, CardHeader, IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { style } from "@mui/system";
 
@@ -27,6 +27,9 @@ export default function Cart({ cart, setCart }) {
           <br />
           Items in cart: {cart.length}
         </Typography>
+        <Button variant="contained" sx={{ m: 2 }}>
+          CHECKOUT
+        </Button>
       </Card>
       <Box className="cartItems">
         {cart.map((item, index) => {

@@ -44,6 +44,9 @@
   background: transparent; /* make scrollbar transparent */
 }
 .cartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .cartItem {
 }
