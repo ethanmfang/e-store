@@ -33,11 +33,11 @@
   width: 70vw;
   margin: auto;
   margin-top: 25px;
-  height: 80vh;
+  max-height: 80vh;
 }
 .cartItems {
   overflow: scroll;
-  height: 80vh;
+  max-height: 80vh;
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -48,5 +48,8 @@
   align-items: center;
   justify-content: space-between;
 }
-.cartItem {
+.cartFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
