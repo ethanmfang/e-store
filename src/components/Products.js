@@ -9,7 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 
 export default function Products({ searchedItems, cart, setCart }) {
   return (
-    <div className="productContainer">
+    <div className="productContainer" data-test="product-container">
       {searchedItems.map((item) => {
         return (
           <Card className="Card" sx={{ width: 350 }} key={item.id}>
