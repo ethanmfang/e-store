@@ -26,7 +26,7 @@ export default function Cart({ cart, setCart }) {
   return (
     <Box className="cart" data-test="cart">
       <Card className="cartHeader" sx={{ mb: 1 }}>
-        <Typography m={2} fontWeight={700}>
+        <Typography m={2} fontWeight={700} flexGrow="1">
           Cart Total: ${cartTotalPrice().toFixed(2)}
           <br />
           Items in cart: {cart.length}
@@ -34,7 +34,12 @@ export default function Cart({ cart, setCart }) {
         <Button variant="contained" sx={{ m: 2 }} onClick={() => runCheckout()}>
           CHECKOUT
         </Button>
-        <Button variant="contained" sx={{ m: 2 }} onClick={() => setCart([])}>
+        <Button
+          variant="contained"
+          sx={{ m: 2, mr: 3, backgroundColor: "gray" }}
+          onClick={() => setCart([])}
+          data-test="clearCartButton"
+        >
           CLEAR CART
         </Button>
       </Card>
