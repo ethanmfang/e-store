@@ -34,6 +34,9 @@ export default function Cart({ cart, setCart }) {
         <Button variant="contained" sx={{ m: 2 }} onClick={() => runCheckout()}>
           CHECKOUT
         </Button>
+        <Button variant="contained" sx={{ m: 2 }} onClick={() => setCart([])}>
+          CLEAR CART
+        </Button>
       </Card>
       <Box className="cartItems" data-test="cartItems">
         {cart.map((item, index) => {
@@ -58,7 +61,7 @@ export default function Cart({ cart, setCart }) {
         })}
       </Box>
       {cart.length > 9 && (
-        <Box className="cartFooter">
+        <Box className="cartFooter" data-test="scrollIndicator">
           <Icon sx={{ color: "#fff" }}>
             <KeyboardDoubleArrowDownIcon />
           </Icon>

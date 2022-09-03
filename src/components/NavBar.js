@@ -46,6 +46,7 @@ const NavBar = ({ cart, setCart }) => {
                   badgeContent={cart.length}
                   onClick={handleOpen}
                   sx={{ p: 0, cursor: "pointer" }}
+                  data-test="cartIcon"
                 >
                   <ShoppingCartIcon />
                 </Badge>

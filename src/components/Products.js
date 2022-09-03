@@ -9,6 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 
 export default function Products({ searchedItems, cart, setCart }) {
   console.log({ searchedItems });
+
   return (
     <div className="productContainer" data-test="product-container">
       {searchedItems.map((item, index) => {

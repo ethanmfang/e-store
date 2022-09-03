@@ -1,6 +1,8 @@
 describe("Product Functionality", () => {
-  it("did the products render properly", () => {
+  beforeEach(() => {
     cy.visit("http://localhost:3000");
+  });
+  it("did the products render properly", () => {
     // cy.getByData("product").eq(0).should("exist");
     // cy.getByData("product").eq(1).should("exist");
     cy.getByData("product").should((items) => {
@@ -12,5 +14,16 @@ describe("Product Functionality", () => {
       expect(items[5]).to.contain("Solid Gold Petite");
       expect(items[6]).to.contain("White Gold Plated Princess");
     });
+  });
+});
+
+describe("Search Functionality Test", () => {
+  it("does the search input filter properly by jewelery", () => {
+    cy.getByData("searchBar").type("jewelery");
+    cy.getByData("product").should("have.length", 4);
+  });
+  it("does the search input filter properly by electronics", () => {
+    cy.getByData("searchBar").clear().type("electronics");
+    cy.getByData("product").should("have.length", 6);
   });
 });

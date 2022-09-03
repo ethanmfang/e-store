@@ -17,6 +17,7 @@ export default function SearchBar({ setKeyword }) {
         label="Search Products"
         variant="outlined"
         onChange={(e) => setKeyword(e.target.value)}
+        data-test="searchBar"
       />
       <IconButton className="SearchButton" size="large">
         <SearchIcon />
