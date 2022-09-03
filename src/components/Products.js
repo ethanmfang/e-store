@@ -8,15 +8,24 @@ import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 
 export default function Products({ searchedItems, cart, setCart }) {
+  console.log({ searchedItems });
   return (
     <div className="productContainer" data-test="product-container">
-      {searchedItems.map((item) => {
+      {searchedItems.map((item, index) => {
         return (
-          <Card className="Card" sx={{ width: 350 }} key={item.id}>
+          <Card
+            className="Card"
+            sx={{ width: 350 }}
+            key={item.id}
+            data-test="product"
+          >
             <CardHeader
               avatar={<Avatar alt="product-icon" src={item.image} />}
               action={
-                <IconButton onClick={() => setCart([...cart, item])}>
+                <IconButton
+                  onClick={() => setCart([...cart, item])}
+                  data-test="addToCart"
+                >
                   <AddIcon />
                 </IconButton>
               }

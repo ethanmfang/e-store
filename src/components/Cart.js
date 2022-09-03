@@ -24,7 +24,7 @@ export default function Cart({ cart, setCart }) {
     setCart([...cart]);
   };
   return (
-    <Box className="cart">
+    <Box className="cart" data-test="cart">
       <Card className="cartHeader" sx={{ mb: 1 }}>
         <Typography m={2} fontWeight={700}>
           Cart Total: ${cartTotalPrice().toFixed(2)}
@@ -35,10 +35,10 @@ export default function Cart({ cart, setCart }) {
           CHECKOUT
         </Button>
       </Card>
-      <Box className="cartItems">
+      <Box className="cartItems" data-test="cartItems">
         {cart.map((item, index) => {
           return (
-            <Card sx={{ borderRadius: 0 }} key={index}>
+            <Card sx={{ borderRadius: 0 }} key={index} data-test="cartItem">
               <CardHeader
                 avatar={<Avatar alt="product-icon" src={item.image} />}
                 action={
