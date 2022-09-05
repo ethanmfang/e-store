@@ -36,7 +36,7 @@ export default function Cart({ cart, setCart }) {
         </Button>
         <Button
           variant="contained"
-          sx={{ m: 2, mr: 3, backgroundColor: "gray" }}
+          sx={{ m: 2, mr: 4, backgroundColor: "gray" }}
           onClick={() => setCart([])}
           data-test="clearCartButton"
         >

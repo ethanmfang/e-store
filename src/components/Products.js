@@ -1,44 +1,92 @@
-import React from "react";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
+import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
+import {
+  Modal,
+  Tooltip,
+  Card,
+  CardHeader,
+  CardMedia,
+  Avatar,
+  Typography,
+  IconButton,
+} from "@mui/material";
+import ProductDetails from "./ProductDetails";
 
 export default function Products({ searchedItems, cart, setCart }) {
-  console.log({ searchedItems });
+  const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleOpen = (item) => {
+    setSelectedItem(item);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
   return (
-    <div className="productContainer" data-test="product-container">
-      {searchedItems.map((item, index) => {
-        return (
-          <Card
-            className="Card"
-            sx={{ width: 350 }}
-            key={item.id}
-            data-test="product"
-          >
-            <CardHeader
-              avatar={<Avatar alt="product-icon" src={item.image} />}
-              action={
-                <IconButton
-                  onClick={() => setCart([...cart, item])}
-                  data-test="addToCart"
-                >
-                  <AddIcon />
-                </IconButton>
-              }
-              title={<Typography className="title">{item.title}</Typography>}
-              subheader={
-                <Typography className="price">${item.price}</Typography>
-              }
-            ></CardHeader>
-            <CardMedia component="img" image={item.image} />
-          </Card>
-        );
-      })}
-    </div>
+    <>
+      <div className="productContainer" data-test="product-container">
+        {searchedItems.map((item) => {
+          return (
+            <Card
+              className="Card"
+              sx={{ width: 350 }}
+              key={item.id}
+              data-test="product"
+            >
+              <CardHeader
+                avatar={
+                  <Avatar
+                    alt="product-icon"
+                    src={item.image}
+                    onClick={() => handleOpen(item)}
+                  />
+                }
+                action={
+                  <Tooltip title="Add To Cart" arrow>
+                    <IconButton
+                      onClick={() => setCart([...cart, item])}
+                      data-test="addToCart"
+                    >
+                      <AddIcon />
+                    </IconButton>
+                  </Tooltip>
+                }
+                title={
+                  <Typography
+                    className="title"
+                    onClick={() => handleOpen(item)}
+                  >
+                    {item.title}
+                  </Typography>
+                }
+                subheader={
+                  <Typography
+                    className="price"
+                    onClick={() => handleOpen(item)}
+                  >
+                    ${item.price}
+                  </Typography>
+                }
+              ></CardHeader>
+              <CardMedia
+                component="img"
+                image={item.image}
+                onClick={() => handleOpen(item)}
+              />
+            </Card>
+          );
+        })}
+      </div>
+      <Modal open={open} onClose={handleClose}>
+        <>
+          <ProductDetails
+            item={selectedItem}
+            setCart={setCart}
+            cart={cart}
+            handleClose={handleClose}
+          />
+        </>
+      </Modal>
+    </>
   );
 }

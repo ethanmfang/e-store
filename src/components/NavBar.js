@@ -56,7 +56,9 @@ const NavBar = ({ cart, setCart }) => {
         </Container>
       </AppBar>
       <Modal open={open} onClose={handleClose}>
-        <Cart cart={cart} setCart={setCart} />
+        <>
+          <Cart cart={cart} setCart={setCart} />
+        </>
       </Modal>
     </>
   );
