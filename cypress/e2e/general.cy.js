@@ -3,8 +3,6 @@ describe("Product Functionality", () => {
     cy.visit("http://localhost:3000");
   });
   it("did the products render properly", () => {
-    // cy.getByData("product").eq(0).should("exist");
-    // cy.getByData("product").eq(1).should("exist");
     cy.getByData("product").should((items) => {
       expect(items[0]).to.contain("Fjallraven");
       expect(items[1]).to.contain("Mens Casual Premium");

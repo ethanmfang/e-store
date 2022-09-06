@@ -55,6 +55,7 @@ export default function Products({ searchedItems, cart, setCart }) {
                   <Typography
                     className="title"
                     onClick={() => handleOpen(item)}
+                    data-test="product-title"
                   >
                     {item.title}
                   </Typography>
@@ -72,6 +73,7 @@ export default function Products({ searchedItems, cart, setCart }) {
                 component="img"
                 image={item.image}
                 onClick={() => handleOpen(item)}
+                data-test="product-image"
               />
             </Card>
           );

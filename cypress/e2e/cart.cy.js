@@ -18,4 +18,13 @@ describe("Cart Functionality Tests", () => {
     cy.getByData("cartIcon").click();
     cy.getByData("scrollIndicator").should("exist");
   });
+
+  it("clear cart button functionality", () => {
+    for (let i = 0; i < 5; i++) {
+      cy.getByData("addToCart").eq(i).click();
+    }
+    cy.getByData("cartIcon").click();
+    cy.getByData("clearCartButton").click();
+    cy.getByData("cartItem").should("have.length", 0);
+  });
 });

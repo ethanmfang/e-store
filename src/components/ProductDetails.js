@@ -13,19 +13,18 @@ import {
 import ClearIcon from "@mui/icons-material/Clear";
 
 export default function ProductDetails({ cart, setCart, item, handleClose }) {
-  console.log(item);
   return (
     <>
       <Card
         className="detailsCard"
         sx={{ width: 550, height: "fit-content", m: "auto", mt: 6 }}
         key={item.id}
-        data-test="product"
+        data-test="product-details"
       >
         <CardHeader
           avatar={<Avatar alt="product-icon" src={item.image} />}
           action={
-            <IconButton onClick={handleClose}>
+            <IconButton onClick={handleClose} data-test="detailsClose">
               <ClearIcon />
             </IconButton>
           }
@@ -52,6 +51,7 @@ export default function ProductDetails({ cart, setCart, item, handleClose }) {
             variant="contained"
             sx={{ m: 2 }}
             onClick={() => setCart([...cart, item])}
+            data-test="addToCart-details"
           >
             ADD TO CART
           </Button>
