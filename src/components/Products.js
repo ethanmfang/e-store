@@ -65,7 +65,7 @@ export default function Products({ searchedItems, cart, setCart }) {
                     className="price"
                     onClick={() => handleOpen(item)}
                   >
-                    ${item.price}
+                    ${item.price.toFixed(2)}
                   </Typography>
                 }
               ></CardHeader>

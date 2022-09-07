@@ -45,7 +45,7 @@ export default function ProductDetails({ cart, setCart, item, handleClose }) {
             fontSize="25px"
             fontWeight="700"
           >
-            ${item.price}
+            ${item.price.toFixed(2)}
           </Typography>
           <Button
             variant="contained"
